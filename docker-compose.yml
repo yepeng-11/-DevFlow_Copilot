@@ -1,7 +1,7 @@
 services:
   postgres:
     image: pgvector/pgvector:pg16
-    container_name: devflow-ai-postgres
+    container_name: repopilot-postgres
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-devflow}
@@ -20,7 +20,7 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: devflow-ai-redis
+    container_name: repopilot-redis
     restart: unless-stopped
     ports:
       - "6379:6379"
@@ -29,7 +29,7 @@ services:
 
   etcd:
     image: quay.io/coreos/etcd:v3.5.18
-    container_name: devflow-ai-etcd
+    container_name: repopilot-etcd
     restart: unless-stopped
     environment:
       ETCD_AUTO_COMPACTION_MODE: revision
@@ -42,7 +42,7 @@ services:
 
   minio:
     image: minio/minio:latest
-    container_name: devflow-ai-minio
+    container_name: repopilot-minio
     restart: unless-stopped
     environment:
       MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY:-minioadmin}
@@ -56,7 +56,7 @@ services:
 
   milvus:
     image: milvusdb/milvus:v2.5.4
-    container_name: devflow-ai-milvus
+    container_name: repopilot-milvus
     restart: unless-stopped
     command: ["milvus", "run", "standalone"]
     environment:
